@@ -31,15 +31,15 @@ public class Dijkastra {
 
         while(heap.size()!=0){
             Edge node = heap.poll();
-            visited.add(node.getNode());
-            for(int[] d: adjacencyList.get(node.getNode())){
+            visited.add(node.getStart());
+            for(int[] d: adjacencyList.get(node.getStart())){
                 if(visited.contains(d[0]))
                     continue;
                 if((node.getDist() + d[1])<res.get(d[0]).getDist()){
                     Edge vert = res.get(d[0]);
                     heap.remove(vert);
                     vert.setDist(node.getDist() + d[1]);
-                    vert.setPrevNode(node.getNode());
+                    vert.setEnd(node.getStart());
                     heap.offer(vert);
                 }
             }

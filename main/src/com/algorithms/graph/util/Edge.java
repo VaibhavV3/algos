@@ -3,30 +3,30 @@ package com.algorithms.graph.util;
 import java.util.Objects;
 
 public class Edge {
-    private int node;
-    private int prevNode;
+    private int start;
+    private int end;
     private int dist;
 
-    public Edge(int node, int prevNode, int dist) {
-        this.node = node;
-        this.prevNode = prevNode;
+    public Edge(int start, int end, int dist) {
+        this.start = start;
+        this.end = end;
         this.dist = dist;
     }
 
-    public int getNode() {
-        return node;
+    public int getStart() {
+        return start;
     }
 
-    public void setNode(int node) {
-        this.node = node;
+    public void setStart(int start) {
+        this.start = start;
     }
 
-    public int getPrevNode() {
-        return prevNode;
+    public int getEnd() {
+        return end;
     }
 
-    public void setPrevNode(int prevNode) {
-        this.prevNode = prevNode;
+    public void setEnd(int end) {
+        this.end = end;
     }
 
     public int getDist() {
@@ -39,7 +39,11 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "Distance of " + node + " from source is " + dist + " and prevNode: " + prevNode;
+        return "Edge{" +
+                "start=" + start +
+                ", end=" + end +
+                ", dist=" + dist +
+                '}';
     }
 
     @Override
@@ -47,11 +51,11 @@ public class Edge {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Edge node1 = (Edge) o;
-        return node == node1.node;
+        return start == node1.start;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(node);
+        return Objects.hash(start);
     }
 }

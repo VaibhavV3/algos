@@ -19,7 +19,7 @@ public class BellmanFord {
                 int temp = res.get(e[0]).getDist() + e[2];
                 if(res.get(e[0]).getDist() + e[2] < res.get(e[1]).getDist()){
                     res.get(e[1]).setDist(temp);
-                    res.get(e[1]).setPrevNode(e[0]);
+                    res.get(e[1]).setEnd(e[0]);
                     flag=true;
                 }
             }
