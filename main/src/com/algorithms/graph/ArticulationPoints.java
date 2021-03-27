@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class ArticulationPoints {
-    private class Vertex{
+    public static class Vertex{
         // to map immediate connected vertices
         HashSet<Integer> adjacentVertices;
         // discovery time of vertex
@@ -35,20 +35,24 @@ public class ArticulationPoints {
     }
 
 
-    Vertex[] vertices;
-    HashSet<Integer> articulationPoints=null;
+    private Vertex[] vertices;
+    private HashSet<Integer> articulationPoints=null;
     public ArticulationPoints(int n) {
         this.vertices = new Vertex[n];
         for(int i=0;i<n;i++)
             vertices[i]=new Vertex(i);
     }
 
-    private void addEdge(int x, int y) {
+    public void addEdge(int x, int y) {
         vertices[x].adjacentVertices.add(y);
         vertices[y].adjacentVertices.add(x);
     }
 
-    private HashSet<Integer> getArticulationPoints() {
+    public Vertex[] getVertices(){
+        return vertices;
+    }
+
+    public HashSet<Integer> getArticulationPoints() {
         if(articulationPoints==null){
             articulationPoints = new HashSet<>();
             dfs(0,0);
